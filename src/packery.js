@@ -18,12 +18,18 @@
       'containerStyle',
       'columnWidth',
       'gutter',
-      'isHorizontal',
-      'isInitLayout',
-      'isOriginLeft',
-      'isOriginTop',
-      'isResizeBound',
+      'isHorizontal', //v1
+      'horizontal',
+      'isInitLayout', //v1
+      'initLayout',
+      'isOriginLeft', //v1
+      'originLeft',
+      'isOriginTop', //v1
+      'originTop',
+      'isResizeBound', //v1
+      'resize',
       'itemSelector',
+      'percentPosition',
       'rowHeight',
       'transitionDuration',
       'isAppended'
@@ -57,7 +63,7 @@
             packery: packeryObj
           });
           el.data('Packery', packeryObj);
-          $rootScope.$emit('packeryInstantiated', packeryObj);
+          $rootScope.$broadcast('packeryInstantiated', packeryObj);
           return packeryObj;
         } else {
           var interval = $interval(function(){
@@ -155,7 +161,7 @@
         }
 
         el.css('visibility','visible');
-        $rootScope.$emit('packeryObjectPacked', el[0]);
+        $rootScope.$broadcast('packeryObjectPacked', el[0]);
       });
     };
 
@@ -178,10 +184,15 @@
         columnWidth: '@?', // Type: Number, Selector String
         gutter: '@?', // Type: Number, Selector String
         isHorizontal: '@?', // Type: Boolean
+        horizontal: '@?', // Type: Boolean
         isInitLayout: '@?', // Type: Boolean
+        initLayout: '@?', // Type: Boolean
         isOriginLeft: '@?', // Type: Boolean
+        originLeft: '@?', // Type: Boolean
         isOriginTop: '@?', // Type: Boolean
+        originTop: '@?', // Type: Boolean
         isResizeBound: '@?', // Type: Boolean
+        resize: '@?', // Type: Boolean
         itemSelector: '@?', // Type: Selector String
         rowHeight: '@?', // Type: Number, Selector String
         transitionDuration: '@?', // Type: String
@@ -207,10 +218,15 @@
         // @TODO: Check for attribute itself, not value of attribute
         if (scope.draggable === 'false') { scope.draggable = false; }
         if (scope.isHorizontal === 'false') { scope.isHorizontal = false; }
+        if (scope.horizontal === 'false') { scope.horizontal = false; }
         if (scope.isInitLayout === 'false') { scope.isInitLayout = false; }
+        if (scope.initLayout === 'false') { scope.initLayout = false; }
         if (scope.isOriginLeft === 'false') { scope.isOriginLeft = false; }
+        if (scope.originLeft === 'false') { scope.originLeft = false; }
         if (scope.isOriginTop === 'false') { scope.isOriginTop = false; }
+        if (scope.originTop === 'false') { scope.originTop = false; }
         if (scope.isResizeBound === 'false') { scope.isResizeBound = false; }
+        if (scope.resizeBound === 'false') { scope.resizeBound = false; }
         if (scope.isAppended === 'false') { scope.isAppended = false; }
 
         // Creates JS Object for passing CSS styles into Packery
