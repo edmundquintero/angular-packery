@@ -63,7 +63,7 @@
             packery: packeryObj
           });
           el.data('Packery', packeryObj);
-          $rootScope.$emit('packeryInstantiated', packeryObj);
+          $rootScope.$broadcast('packeryInstantiated', packeryObj);
           return packeryObj;
         } else {
           var interval = $interval(function(){
@@ -161,7 +161,7 @@
         }
 
         el.css('visibility','visible');
-        $rootScope.$emit('packeryObjectPacked', el[0]);
+        $rootScope.$broadcast('packeryObjectPacked', el[0]);
       });
     };
 
